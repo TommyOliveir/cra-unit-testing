@@ -1,4 +1,4 @@
-//Note:
+//Note: testing playground extension
 import { render, screen } from "@testing-library/react";
 import { Application } from "./application";
 
@@ -31,9 +31,39 @@ describe("Application", () => {
     });
     expect(nameElement).toBeInTheDocument();
 
-    //getByText
+    //getByText full string match
     const paragraphElement = screen.getByText("All fields are mandatory");
     expect(paragraphElement).toBeInTheDocument();
+
+    //getByText full string match with ignore case(string)
+    const paragraphElement2 = screen.getByText("all fields are mandatory", {
+      exact: false,
+    });
+    expect(paragraphElement2).toBeInTheDocument();
+
+    //getByText substring match(string)
+    const paragraphElement3 = screen.getByText("all fields are ", {
+      exact: false,
+    });
+    expect(paragraphElement3).toBeInTheDocument();
+
+    //getByText full match(regex)
+    const paragraphElement4 = screen.getByText(/All fields are mandatory/);
+    expect(paragraphElement4).toBeInTheDocument();
+
+    //getByText substring ignore case(regex)
+    const paragraphElement5 = screen.getByText(/all fields/i);
+    expect(paragraphElement5).toBeInTheDocument();
+
+    //getByText full string match ignore case(regex)
+    const paragraphElement6 = screen.getByText(/^all fields are mandatory$/i);
+    expect(paragraphElement6).toBeInTheDocument();
+
+    //getByText with custom function text match(regex)
+    const paragraphElement7 = screen.getByText((content) =>
+      content.startsWith("All")
+    );
+    expect(paragraphElement7).toBeInTheDocument();
 
     //getByTitle
     const closeElement = screen.getByTitle("close");

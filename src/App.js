@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Application />
-      <Skills />
+      <Skills skills={["HTML", "CSS", "JS"]} />
     </div>
   );
 }
