@@ -5,7 +5,8 @@ import { Application } from "./application";
 describe("Application", () => {
   test("renders correctly", () => {
     render(<Application />);
-
+    
+    //this is for heading 
     // const pageHeading = screen.getByRole("heading", {
     //   name: "Job application form",
     // });
@@ -16,6 +17,7 @@ describe("Application", () => {
     });
     expect(pageHeading).toBeInTheDocument();
 
+    //this is for heading 
     // const sectionHeading = screen.getByRole("heading", {
     //   name: "Section 1",
     // });
